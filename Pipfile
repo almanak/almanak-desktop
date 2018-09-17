@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 pyfladesk = "*"
-pyinstaller = "*"
+python-dotenv = "*"
 
 [dev-packages]
 pylint = "*"
