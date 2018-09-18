@@ -4,6 +4,7 @@ dist/
 build/
 *.spec
 .env
+user_settings.cfg
 venv/
 *.pyc
 __pycache__/

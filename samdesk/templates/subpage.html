@@ -2,7 +2,15 @@
 
 {% block content %}
     <div class="col-lg-12">
-        <h1>Underside</h1>
+        <h1>Underside - config</h1>
+        {% if cfg %}
+        <dl>
+            {% for k, v in cfg.items() %}
+                <dt>{{k}}</dt>
+                <dd>{{v}}</dd>
+            {% endfor %}
+        </dl>
+        {% endif %}
     </div>
 {% endblock %}
 

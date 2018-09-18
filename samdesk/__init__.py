@@ -1,38 +1,34 @@
-import os
+from os import path
+from click import get_app_dir
 from flask import Flask, render_template, jsonify
+# from webui import ui
 
 
 def create_app(test_config=None):
     # create and configure the app
-    app = Flask(__name__, instance_relative_config=True)
-
+    app = Flask(__name__)
     if test_config is None:
-        # load the instance config, if it exists, when not testing
-        # app.config.from_pyfile('config.py', silent=True)
-        # I'm just using direct config for now
-        app.config.from_mapping(
-            CODE_TESTVAR = 'testvar',
-        )
+        # load default_settings. No FLASK_ENV-variable is set, but it
+        # defaults to 'development'
+        app.config.from_pyfile('default_settings.cfg')
+        # load user_settings. Must be present as they contain the SECRET_KEY
+        # and more necessary envvars
+        user_settings = path.join(get_app_dir('Almanak'), 'user_settings.cfg')
+        app.config.from_pyfile(user_settings)
+
     else:
         # load the test config if passed in
         app.config.from_mapping(test_config)
 
-    # ensure the instance folder exists
-    # used to place a db-file in the tutorial
-    # try:
-    #     os.makedirs(app.instance_path)
-    # except OSError:
-    #     pass
-
     # a simple page that says hello
-    @app.route('/hello')
+    @app.route('/config')
     def hello():
-        return str(list(app.config.keys()))
+        return render_template('subpage.html', cfg=app.config)
         # return jsonify(app.config)
 
     @app.route('/env')
     def env():
-        return app.config.get('TEST_ENV_KEY', 'Missing env-key')
+        return app.config.get('USER_SETTINGS_VAR', 'Missing env-key')
 
     @app.route('/')
     def index():
@@ -43,3 +39,4 @@ def create_app(test_config=None):
         return render_template('subpage.html')
 
     return app
+    # return WebUI(app, debug=True)
