@@ -1,0 +1,13 @@
+ARCHIVISTS WILL NEED THE ABILITY TO SORT AND FILTER ITEMS WITHIN THE LIST OF INGESTED FILES. BOTH WOULD APPLY TO THESE FIELDS: FULL PATH, BASE FOLDER, FILE, TIME STAMP, SIZE, FILE TYPE (PRONOM PUID). IDEALLY, WE COULD APPLY MORE THAN ONE FILTER AND ALLOW FILTERS TO AT LEAST HAVE AND/OR LOGIC AGAINST OTHER FILTERS.WE WILL PROBABLY NEED TO GROUP PUIDS BY LARGER TYPES: TEXT FILES, WORD PROCESSING DOCUMENT, HTML, XML, VARIOUS TYPES OF DATA, ETC.
+
+Måske skal diverse teknisk metadata kunne dumpes i en json-encoded xml-element - ligesom physical_format - så vil disse to elementer være catchall-felter sammen med misc_data
+
+Zip-filer skal have en tilhørende csv-fil eller json-encoded element-værdi, hvor der for hver indeholdt fil er oplistet original filsti, samt filformat (puid, mimetype eller andet)
+
+The return or destruction of the born-digital files may have been indicated during the deposit/ transfer process. This work will be done outside Hypatia. A note regarding the removal of material as part of the appraisal process, such as a broad note like “third-party publications removed” should be possible at component level and at the collection level.
+
+Ved fjernelse af digitale duplicates skal det være muligt at tildele oas'en en ny reference til et andet filnavn. Yderligere metadata bør vel ikke indskrives i begge eller flere oas'er?
+
+DER SKAL ARBEJDES MED RELEVANCE!! Vi har kun relevans-sorting i autocomplete og det kun efter antallet af referencer i oas'er til de entiteter, der vises i autocomplete. Men hvordan sorteres visningen af oas'er? Jeg tænker collections, series, items - men så skal man kunne lave relationer til entiteter på både collections-niveau og series-niveau, og skal må så frasortere de oas'er der ligger under en given serie, som allerede er vist i resultatoversigten???
+
+Vi skal have collection-displaynames og subjekt-displaynames inkorporeret i autocomplete også i forhold til ranking

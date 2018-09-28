@@ -1,0 +1,235 @@
+A&D_00: FUNDAMENTALS
+The arrangement and description tool must provide a mechanism which allows an archivist to do the following:
+• Define an intellectual arrangement of transferred archival records that reflects the provenance and original order of the records. The original files and directory are not moved or modified in any way.
+• Create and edit descriptive metadata for those records. It must also be possible for the archivist to add descriptive data to individual files in addition to adding descriptive data for any of the given levels of arrangement.
+Levels of arrangement as defined within archival practice, and accordingly, this tool set includes collection, series, subseries, folder, and item. (see A&D_12 Overview)
+
+A&D_01: GRAPHICAL USER INTERFACE
+The original organization of the files and directories within an ingested accession and the archivist-defined intellectual arrangement have special status, and that status should be obvious in the UI and should be enforced by the UI. For example, it is essential that users authenticate as an archivist in order to modify the intellectual arrangement. (Keep in mind that a detailed description of collection permissions may not be covered by this document.)
+When working on the intellectual arrangement, archivists will need ready access to technical metadata such as the original full path of a given file (see A&D_02: Technical Metadata). It may be useful to have a “show original” function within a contextual menu that would show the originally ingested file in the left pane.
+
+A&D_01.01: Representation and manipulation of hierarchy
+The graphical user interface should allow users to view and interact with hierarchical structures representing the intellectual arrangement and the original arrangement of files and directories within ingested accessions. There should be distinct panes representing the structure of the intellectual arrangement and representing the accessions. For each component level in the intellectual arrangement, the user interface should present associated digital assets (see A&D_01.02 and A&D_12) and an interface to view and edit descriptive metadata elements (see A&D_03.02).
+
+In addition, the tool should allow the following operations (applies to intellectual arrangement only unless otherwise specified):
+• Collapse and expand record nodes for viewing (applies to both the original ingest and the intellectual arrangement)
+• Add new child record (see A&D_12)
+• Add new sibling record (see A&D_12)
+• Copy all or part of an existing structure to the intellectual arrangement. Ideally, we could copy structure of the original ingest, or copy all or part of an intellectual arrangement.
+• Delete a record in intellectual arrangement. This applies only to the intellectual arrangement. Recursive folder delete is a dangerous operation, and the UI must add special safe guards. We should be able to delete a record, only if it has no children in order to avoid orphan entries.
+
+A&D_01.02: Drag and drop functionality
+NOTE:This is heavily interrelated with A&D_12. Please refer to functional requirements in detail below.
+As noted in the Overview above, drag and drop is part of the UI necessary to create an intellectual arrangement for an accession.The original accession is read-only and cannot be modified (with the exception of appraisal actions; see below and A&D_10) and represents the original directory structures as they existed within an accession. Dragging a directory, file, or multiple of either to a component in the intellectual arrangement will establish a relationship between those directories and files and that component level.
+Component levels also must be draggable to allow for ordering and changing the level of hierarchy.This includes changing the sequence of nodes, promotion and demotion nodes, and auto-renumbering sequences of intellectual units in accord with the modifications.
+THE UI NEEDS TO MAKE IT CLEAR WHICH FILES AND FOLDERS IN THE ORIGINAL INGEST HAVE OR HAVE NOT BEEN ASSIGNED TO A COMPONENT WITHIN THE INTELLECTUAL ARRANGEMENT. DELETING THE RELATIONSHIP BETWEEN A DIRECTORY OR FILE AND THE COMPONENT TO WHICH IT IS ASSIGNED SHOULD UPDATE THE STATUS (TO “UNASSIGNED”) AS APPROPRIATE.
+Following the user interface conventions of desktop file managers, the original ingested accessions could be represented in a pane on the left side of the window, and the intellectual arrangement could be represented in a pane on the right side of the window. Files and folder can be dragged from left to right.The left side should be impossible to modify, with the exception of the ability to remove files during appraisal (see A&D_10.01 below).
+
+A&D_01.03: Sort records
+ARCHIVISTS WILL NEED THE ABILITY TO SORT AND FILTER ITEMS WITHIN THE LIST OF INGESTED FILES. BOTH WOULD APPLY TO THESE FIELDS: FULL PATH, BASE FOLDER, FILE, TIME STAMP, SIZE, FILE TYPE (PRONOM PUID). IDEALLY, WE COULD APPLY MORE THAN ONE FILTER AND ALLOW FILTERS TO AT LEAST HAVE AND/OR LOGIC AGAINST OTHER FILTERS.WE WILL PROBABLY NEED TO GROUP PUIDS BY LARGER TYPES: TEXT FILES, WORD PROCESSING DOCUMENT, HTML, XML, VARIOUS TYPES OF DATA, ETC.
+
+A&D_01.04: Copy and paste of hierarchical structure
+NOTE: See also A&D_12.05 and A&D_12.06
+Archivists should be able to copy and paste intellectual arrangement from a number of sources. First, they should be able to copy directory structures from accessions to replicate them in the intellectual arrangement when the directories represent a clearly defined original order.They should also be able to copy existing intellectual arrangements that have been either imported into or created within the tool and paste them into the arrangement pane to duplicate structure as needed.
+
+A&D_02: TECHNICAL METADATA (PC)
+The decisions archivists make in terms of appraisal is partly reliant on technical metadata. Technical metadata should be only viewable and not editable. Technical metadata may also be used to sort records (see A&D_01.03) or in the generation of reports (see A&D_08).
+
+A&D_02.01: File-level technical metadata
+The A&D tool should be able to import and provide access (and batch applicable) to the following technical metadata for a given file:
+
+Filename
+Original full file path
+MD5 Hash. The MD5 (16 bytes) hash of the file
+SHA-1 Hash. The SHA-1 (20 bytes) hash of the file
+File Dates. Lists the Dates and Times of the following activities for that file on the imaged source:
+• Created
+• Last accessed
+• Last modified
+File Size
+File Format, as represented by PUID or MIME type.
+In addition, file format information ideally should have user recognizable names such as WordPerfect 4.2, Lotus 1-2-3 1.2, Word 6.0, etc. and be grouped into the following file categories:
+• Archives. Archive files include Email archive files, Zip, Stuffit,Thumbs.db thumbnail graphics, and other archive formats.
+• Databases. Database files such as those from MS Access, Lotus Notes NSF, and other database programs.
+• Documents. Includes recognized word processing, HTML, WML, XML, TXT, or other document-type files.
+• Email. Includes Email messages from Outlook, Outlook Express, AOL, Endoscope,Yahoo, Rethink, Udder, Hotmail, Lotus Notes, and MSN.
+• Executables. Includes Win32 executables and DLLs, OS/2, WindowsVxD, WindowsNT, JavaScript, and other executable formats.
+• Graphics. Lists files having the standard recognized graphic formats such as .tif, .gif, .jpeg, and .bmp, etc.
+• Internet/Chat Files. Lists Microsoft Internet Explorer cache and history indexes.
+• Multimedia. Lists .aif, .wav, .asf, and other audio and video files.
+• Presentations. Lists multimedia file types such as MS PowerPoint or Corel Presentation files.
+• Spreadsheets. Lists spreadsheets from Lotus, Microsoft Excel, QuattroPro, etc.
+• Unknown Types. Lists files whose types the A&D tool cannot recognize.
+
+A&D_02.03: Presentation of technical metadata
+Users should be able to view the technical metadata presented in a column format that presents the metadata as key/value pairs.
+
+A&D_03: DESCRIPTIVE METADATA
+It is essential that this tool is able to create, edit, import and export descriptive metadata about the collection (which might include paper archives not present or represented in Fedora in any way) for use in a third party collection management software (including, but not limited to Archivists Toolkit and CALM).The elements of the descriptive metadata should map to the descriptive elements of Encoded Archival Description (EAD).The tool does not need to store the metadata natively as EAD (e.g., it could store it as MODS), but the tool will need mappings to EAD for both import and export.
+The sheer scale of born-digital files means that work is likely to be done over a prolonged period (i.e., over weeks/months).The solutions/workflow must be able to accommodate the flexibility of being able to save work whilst this sorting and processing is on-going.
+
+A&D_03.01 Importing existing EAD
+FOR HYBRID, AND MULTI-ACCESSION BORN-DIGITAL COLLECTIONS, THERE IS A STRONG LIKELIHOOD THAT THE ARCHIVAL ARRANGEMENT OF THE MATERIAL WILL ALREADY HAVE BEEN UNDERTAKEN AND THAT THE NEW MATERIAL WILL NEED TO BE INCORPORATED INTO THE EXISTING STRUCTURE SO THAT IT CAN BE PRESENTED AS A SINGLE COLLECTION/FINDING AID. IF MATERIAL (ESPECIALLY BORN- DIGITAL) IS ADDED TO A COLLECTION, THEN THE EXISTING INTELLECTUAL ARRANGEMENT AND DESCRIPTIVE METADATA MUST BE IMPORTED INTO HYPATIA. AFTER IMPORTING THE EXISTING STRUCTURE OF THIS COLLECTION INTO HYPATIA, THE BORN DIGITAL MATERIAL CAN BE ARRANGED INTO EXISTING OR NEW SERIES / SUB-SERIES ETC AND THEN EXPORTED AS AN UPDATED EAD
+
+A&D_03.02 Viewing/editing descriptive metadata
+The tool will provide the ability to view and edit metadata using a form-based interface.The structure of the collection’s intellectual arrangement should be viewable using a tree view (see A&D_01.01).The tool should allow for fields with controlled values (compare with screenshots in A&D_01.01) and allow for both short strings and full text notes for some values.
+
+Further Questions or Comments
+Specific clarification is needed for the relationship between the PID for an asset held in Hypatia and its reference in EAD. This could be at least two places in EAD — either the unitid tag or the id attribute on the component levels for the PID associated with the set for a given component (e.g. the series). DAOs should contain references to the PIDs for the files themselves.
+
+A&D_03.03 Creating new description and intellectual arrangement
+For some collections the born-digital material will represent the first accession from that individual/ organization and we must offer the ability to start a completely new intellectual arrangement in the tool rather than force a user to create a skeleton record in AT/CALM and then import it into the tool (as per user story in A&D_03.01).
+
+A&D_03.04 Exporting EAD data
+Integrating born digital material into an existing arrangement requires that the updated description and arrangement can be successfully re-imported into software such as AT, CALM, and discovery platforms to enable further work or discovery.
+
+A&D_03.05: Controlled vocabularies
+ARCHIVISTS WILL NEED TO BE ABLE TO USE CONTROLLED VOCABULARIES TO ASSIGN ACCESS POINTS AT THE COLLECTION LEVEL AS WELL AS COMPONENT LEVELS THROUGHOUT THE INTELLECTUAL ARRANGEMENT. THE TOOL SHOULD EITHER BE ABLE TO IMPORT EXISTING VOCABULARIES (SEE A&D_07.02) OR PROVIDE DYNAMIC LOOKUPS AGAINST EXISTING WEB SERVICES. ADDITIONALLY, ARCHIVISTS WILL NEED TO OCCASIONALLY DEFINE NEW TERMS (E.G. AUTHORIZED FORMS OF NAMES THAT DON’T CURRENTLY EXIST IN AUTHORITY FILES).
+
+A&D_04: RIGHTS/RESTRICTIONS
+Restrictions may affect the discovery, retrieval, or delivery of archival material, and will need to exist as controlled values that are machine actionable that have notes for human interpretation.
+From the SAA Glossary of Archival Terminology: Access restrictions may be defined by a period of time or by a class of individual allowed or denied access. ... Use restrictions may limit what can be done with materials, or they may place qualifications on use. For example, an individual may be allowed access to materials but may not have permission or right to copy, quote, or publish those materials, or conditions may be imposed on such use.
+In terms of the implementation of this tool, access restrictions are the most critical. Archivists using this tool will need to set both date-based access restrictions and access restrictions based on class of user. They will also need the ability to add notes providing human-readable detail for both access restrictions and use restrictions.
+Access restrictions should apply to a given component level and all the related files associated with that component level. Occasionally, related files may have more restrictions than their associated level.
+
+A&D_04.01: Date-based access restrictions with automatic removal
+Archivists will need to set date-based access restrictions that will be lifted automatically on a given date.
+
+A&D_04.02: Access restrictions to be removed manually at a later date
+Archivists will need to add date-bound access restrictions that cannot be calculated automatically. These will need manual review and presumes that there will be a mechanism to report on restrictions for a given collection (cf. A&D_08).
+
+A&D_04.03: Access restrictions for multiple classes of users and individual users
+Archivists will need the ability to grant varying levels of access to archivist-defined groups of users and the occasional individual user.
+
+A&D_04.04: Variable levels of discovery and access
+ARCHIVISTS WILL NEED TO HAVE VARIABLE LEVELS OF GATED DISCOVERY AND ACCESS. LEVELS OF ACCESS SHOULD INCLUDE “DISCOVER” (ALLOWING ITEMS TO BE SEARCHED), “VIEW” (ALLOWING METADATA TO BE VIEWED), “RENDER” (ALLOWING BROWSER-RENDERABLE REPRESENTATIONS OF AN ASSET TO BE DISPLAYED), AND “DOWNLOAD” (ALLOWING ASSOCIATED FILES TO BE DOWNLOADED).
+
+A&D_05: VIEW FILES / REPRESENTATIONS
+Archivists will need to view files or representations of those files to assist in the processes of arrangement and description.
+
+A&D_05.02: Extract and view text strings
+For all files (particularly for file formats that are not easily renderable within a web browser) the tool should present a plain text representation of the data within a file by extracting strings.
+
+A&D_05.03: Download files
+For all files, archivists should be able to download the files to their local machine to allow them to view them with supplemental software. This can include native software (e.g. versions of WordPerfect) or software that can parse a number of file formats (e.g. Quick View Plus).
+
+A&D_06: EXPORT METADATA (EXCLUDING EAD)
+Exported metadata formats required:
+• METS for an entire collection
+• MODS for a single object
+• CSV export of all file objects, with associated PIDs/URLs, to be imported into an archival data management system like Archivist’s Toolkit.
+
+A&D_07: IMPORT METADATA (EXCLUDING EAD)
+Archivists may want to import descriptive and arrangement metadata from another tool into the arrangement and description tool.
+
+A&D_07.01: Import metadata from Forensic Toolkit
+The A&D tool should be able to import the bookmarks, labels and flag “privilege” in collections. Bookmarks will be mapped to series, subseries, etc. Flagged “privilege” items will be mapped to “restricted” materials. Mapping of the “labels” will be decided later.
+
+A&D_07.02: Import controlled vocabularies
+The tool should be able to import controlled vocabulary terms for use within the tool. Sources of data could include Archivists’Toolkit, CALM, and web services such as id.loc.gov.
+
+A&D_07.03: Import descriptive metadata using entity extraction software/service
+THE A&D TOOLS SHOULD BE ABLE TO PRODUCE ENTITIES (NAME, SUBJECT, PLACE) USING AN ENTITY EXTRACTION ENGINE, THIRD PARTY ENTITY EXTRACTION WEB SERVICE, OR THIRD PARTY ENTITY EXTRACTION PROGRAM and store the entities extracted in RDF format in Fedora.The entities will become the facets of the collection.
+
+A&D_08: REPORTING
+Reporting in an arrangement and description toolset should allow for arbitrary queries. Reports generated from metadata about the records may inform external decision making processes or be used for the calculation of statistics. Reports should be produced in an output format such as CSV or XML that will allow simple post-processing.
+
+A&D_08.01: Report on duplicate items
+The tool needs to provide a reporting mechanism that will identify files that have an identical MD5 or SHA1 hash. Because the hash is independent of the filename, identical files may actually have different filenames. (See also: A&D_01.04, A&D_04, A&D_10.02)
+
+A&D_08.02: Report on restricted components and collections
+Archivists will need to generate reports listing all collections containing restricted material, as well as all component levels within a specific collection that are restricted.
+
+A&D_08.03: Report on file formats
+The tool should be able to provide a breakdown of file formats within a collection. This presumes and requires that the technical metadata already is associated with the files. The assumption on our part is that this information is included or generated during ingest.
+
+A&D_08.04: Report on appraisal status
+Archivists will need to create reports listing the various appraisal statuses as defined in A&D_10.There should be both a combined report and separate report for each of the individual statuses.
+
+A&D_09: EMAIL
+The tool should provide a set of tools to allow work with email messages that may be contained in accessions. The tool should be able to work with email created by different programs (Outlook, Outlook Express, AOL, Yahoo, Hotmail, Lotus Notes, and MSN, Eudora, etc.) and in different formats (mbox, mime, etc.).
+
+A&D_09.01: Display emails by group
+THE TOOL SHOULD ALLOW ARCHIVISTS TO VIEW GROUPINGS OF EMAILS AS FOLLOWS:
+• Email Attachments (Contains only attachments to emails);
+• Email Reply (Contains emails with replies);
+• Forwarded Email (Contains only emails that have been forwarded);
+• From Email (Contains everything derived from an email source, i.e. email related)
+• Date (organized by Year, then by Month, then by date, for both Submitted and Delivered);
+• Email Addresses (organized by Senders and Recipients, and subcategorized by Email Domain, Display Name, and Email Addresses).
+
+A&D_09.02: Export/download email
+The A&D tools should be able to export emails (cf. A&D_05.03) to work with other programs (e.g. network graph, etc.). Ideally, users would be able to select what fields and range of the value of the fields to be exported: to, from, date, cc, bcc, subject, email body.
+
+A&D_10: APPRAISAL OF MATERIAL
+An archivist will appraise the material to ensure that only items wanted for long term preservation are retained. This is a key professional skill and the approach to this will vary from collection to collection. It may occur either pre or post ingest. Where it occurs after ingest there is a need to record the decision along the same lines as with duplicate files (see A&D_10.02).With paper archives we usually ask the depositor whether they want items that we do not wish to retain returned to them, recycled (for non-confidential material) or confidentially destroyed.
+
+A&D_10.01 Marking files for deletion or other appraisal actions
+It would be nice for the appraisal process to be able to flag the status of files and folders within the accession ingest as either “keep”, “unsure” and “bin”. This should be applicable at any level and inherited downwards but with the ability to change individual file(s) as needed - for example the vast bulk of a series of nested folders should not be kept but there are a few individual files that should be retained (or vice versa)
+With large accessions it might be that similar material is held in different folders - so the ability to sort or filter the files (see A&D_01.03) in the accession ingest could offer the flexibility of looking at the material in alternative ways - but this should be a temporary situation and should not change or over-ride the arrangement of the folders/files at the point of ingest.
+It is likely that appraisal will be conducted over time so the appraisal status flag would assist with recording progress through the material or allow additional staff to review particular sections of material (i.e., everything marked unsure).
+
+For material to be deleted there should be a two-step process requiring confirmation etc. — one option could be to get Hypatia to generate a report listing all of the files to be deleted but I am not sure how useful/ practical this would be if hundreds (or more) files are being deleted. We should consider making deletion of files from the ingest something that is restricted to particular user roles with appropriate permissions (ref to A&D_04). The return or destruction of the born-digital files may have been indicated during the deposit/ transfer process. This work will be done outside Hypatia. A note regarding the removal of material as part of the appraisal process, such as a broad note like “third-party publications removed” should be possible at component level and at the collection level. It should correspond with the EAD note element <appraisal/>.
+
+A&D_10.02: Duplicate Files
+EITHER AS PART OF THE APPRAISAL PROCESS OR OTHERWISE THERE IS A REQUIREMENT TO BE ABLE TO DETECT FILES THAT ARE EXACT DUPLICATES OF ANOTHER FILE IN THE REPOSITORY AND TO THEN BE ABLE TO EITHER TO HIDE OR DELETE THE FILE. IT IS CRITICAL THAT ALL ACTIONS ON THE FILE ARE AUTOMATICALLY RECORD TO PROVIDE A FULL AUDIT TRAIL. THREE POSSIBILITIES:
+• Hide:This hides a file from view so it is not visible for the archival arrangement, discovery or access elements of the workflow
+• Delete:This marks the file(s) as ready for deletion but suggest a further prompt to confirm that you want to delete the file from the system completely.This technique could also be applied to files/folders that are identified for deletion as part of an appraisal process and/or files that subsequently need to be removed (e.g., for copyright purposes) [should Wally be able to delete files?]
+• Ignore:This says I know that the files are the same but do not wish to hide or delete it
+For the purposes of creating the report and accessing the audit trail etc all hidden and deleted files need to have a datastream updated to reflect the change with possibly a default content - this file was identified as a duplicate by XXperson onYYdate or deleted by XXperson for ZZreasons.
+
+When deleting files, it is unclear if Hypatia should delete the files itself or just “identify” them for deletion. If we choose the latter, this would mean that the deletion would happen outside of Hypatia.
+
+When you delete a file (or series of files) should we delete the physical file including any derived versions etc. but leave a “shadow” or “tombstone” record that includes an audit trail and reason for deletion (i.e. duplicate or appraisal). This should be available as distinct report (see A&D_08). In addition, the issue of whether or not preservation copies of “hidden” files or files marked as “deleted” but not removed should be created.
+
+A&D_10.03: Immediate (unstaged) deletion
+THE TOOL SHOULD PROVIDE AN OPTION TO DELETE FILES IMMEDIATELY IF NEEDED.THIS MUST PRESENT A CONFIRMATION SCREEN AS FILES MAY NOT BE RECOVERABLE.THIS FUNCTIONALITY SHOULD STILL RETAIN A “TOMBSTONE” RECORD THAT INCLUDES THE DATE OF DELETION.
+
+A&D_11: BATCH APPLICATION OF METADATA FROM FILES
+The sheer volume of files means that we should try to automatically use the extractable metadata to form the proposed basis of the descriptive metadata. For example:
+A&D_11.01: Apply filename to title field
+A&D_11.02: Apply creation/modified date to “from” date field
+A&D_11.03: Apply access/modified date to “to” date field
+A&D_11.04: Apply creator to creator field
+A&D_11.05: Apply file format to descriptive/technical note
+A&D_11.06: Apply number of files to extent
+A&D_11.07: Apply size of file(s) to extent
+
+A&D_12: INTELLECTUAL ARRANGEMENT
+The contents of this overview have been adapted from section D2,“Resources in AT Description,” in the functional requirements for the Archivists’Toolkit Description Module (http://archiviststoolkit.org/sites/default/ files/description.pdf, pp. 4-9).
+
+Record Types
+A collection is 1) an item or aggregate of items generated or collected by an individual, family, or organization in the course of their activities and deemed to be of enduring value, 2) and is in the custody of an archival institution.
+Collections may also be linked to components to form multi-level descriptions.
+
+A&D_12.01: Create new collections
+Archivists must be able to create new records representing archival collections. Descriptive metadata should follow the collection-level elements available within Encoded Archival Description and must include creator, title, date ranges, identifiers, and call numbers.
+
+A&D_12.02: Create new component levels
+Archivists must be able to create new component levels that are children of collection records or siblings or children of other component levels. See A&D_03 for description-related requirements.
+
+A&D_12.03: Associate files and directories to component levels
+Archivists must be able to associate files and directories from accessions with component levels.They may also need to remove or change the associations. Assigning a directory to a component should not create a new component within the intellectual arrangement.
+The tool should allow for multiple associations during the arrangement process. However, a file or directory must have relationships with no more than one component within a “finalized” intellectual arrangement.
+
+A&D_12.04: Associate accession with collection
+There will be cases where accessions will not include metadata that relates them to a specific collection, so the tool will need to provide the ability to allow archivists to associate accessions with collections.
+
+A&D_12.05: Replicate directory structure from accession into intellectual arrangement
+Archivists may discover that an accession’s directory structure demonstrates that a creator had a clear existing arrangement that should be maintained. Accordingly, archivists using the tool should be able to replicate some or all of the the directory structure from an accession into corresponding component levels. See also A&D_01.04, A&D_02, and A&D_11.
+
+A&D_12.06: Duplicate components and structure in intellectual arrangement
+Archivists are used to being able to copy component structure during the arrangement process to prototype various intellectual arrangements. Contents of the descriptive metadata should be duplicated automatically.
+
+A&D_13: SEARCHING WITHIN FILES
+Ability to do pattern or keyword searches in order to discover files that should be restricted - credit card or social security information; passwords; student or medical files etc.
+
+A&D_13.01: Pattern searching
+For pattern search, it is desirable to allow users to define their own patterns as well as to include commonly used patterns such as social security number, phone no., credit card nos. etc.
+
+A&D_13.02: Full-text searching
+For full text search, it is desirable to have the following options:
+- Stemming.!Words!that!contain!the!same!root,!such!as!raise!and!raising.
+- Phonic.!Words!that!sound!the!same,!such!as!raise!and!raze.
+- Synonym.!Words!that!have!similar!meanings,!such!as!raise!and!li9.
+- Fuzzy.!Words!that!have!similar!spellings,!such!as!raise!and!raize

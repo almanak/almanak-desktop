@@ -1,0 +1,23 @@
+Grundlæggende bør man vel arbejde med en defaultSettings.json for hver klynge (samme drevstier) af SAM's.
+Disse defaultSettings kan så overrides af localSetting.json for hver klient, hvor parametre som viewer-
+applikationer og -stier sættes.
+Endelig skal vi kunne sætte en adminSettings.json for hver ekstern SAM (frivillig, lokalarkivar m.m.), hvis
+parametre ikke kan ændres uden ond vilje.
+
+AdminSettings:
+
+{
+    "disabledActions": ["deploy", "assessment"]
+    "disabledFields": ["curator", "ingest_id", "collection", "", ""],
+    "defaultValues": {
+        "curator": "1;Aarhus Stadsarkiv",
+        "collection": "Aarhus Byråds Forhandlinger",
+        "": ""
+    },
+    "rootFolder": "C:/SAM"
+    "viewerPaths": {
+        "images": "",
+        "movingImages": "",
+        "pdf": ""
+    }
+}

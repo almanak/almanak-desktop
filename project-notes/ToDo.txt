@@ -1,0 +1,33 @@
+To Do - bør lægges ind under SAM-issuetracker
+
+Omarranger den måde array-input funger i GUI'en. Et tryk på plus skal enten flytte eksisterende felter en tak ned og placere et tomt felt med focus udfor knappen (og nedenstående felter havende et minus) eller der skal være både plus og minus udfor hvert felt, så man opretter et felt, lige hvor man vil. 
+
+Kan digitale filer hentes ind til SAM i et fil-hierarki? Kan man ingeste en mappe med mapper?
+Relationer mellem items og entities skal vægtes. Dvs. er den omtalte entitet primær eller blot omtalt sekundært/en passant?? Hvordan rankerer man efter dette? Og hvordan markerer man på samlingsniveau at en entitet er primær? Samlinger er ikke items, men collections, så der skal en seperat søgning til eller hvordan? Og er en entitet relateret på samlingsniveau, skal samlingen være hit nr. 1!
+
+3. Original filsti skal udregnes ved preprocessering
+Serier, som genereres under samlinger, skal have en position. De skal kunne rykkes op eller ned og altid vises i den rækkefølge!
+Hvordan fjerner man en enhed, der er placeret under en serie
+
+4. Alle binære filer skal låses ved ingest og holdes låst for brugeren! - JENS
+
+Automatisk frigivelse af arkivalier, der løbende frigives til offentliggørelse - hvordan?
+
+A&D_09.01: Display emails by group
+THE TOOL SHOULD ALLOW ARCHIVISTS TO VIEW GROUPINGS OF EMAILS AS FOLLOWS:
+• Email Attachments (Contains only attachments to emails);
+• Email Reply (Contains emails with replies);
+• Forwarded Email (Contains only emails that have been forwarded);
+• From Email (Contains everything derived from an email source, i.e. email related)
+• Date (organized by Year, then by Month, then by date, for both Submitted and Delivered);
+• Email Addresses (organized by Senders and Recipients, and subcategorized by Email Domain, Display Name, and Email Addresses).
+
+A&D_09.02: Export/download email
+The A&D tools should be able to export emails (cf. A&D_05.03) to work with other programs (e.g. network graph, etc.). Ideally, users would be able to select what fields and range of the value of the fields to be exported: to, from, date, cc, bcc, subject, email body.
+
+A&D_13.02: Full-text searching
+For full text search, it is desirable to have the following options:
+- Stemming.!Words!that!contain!the!same!root,!such!as!raise!and!raising.
+- Phonic.!Words!that!sound!the!same,!such!as!raise!and!raze.
+- Synonym.!Words!that!have!similar!meanings,!such!as!raise!and!lift.
+- Fuzzy.!Words!that!have!similar!spellings,!such!as!raise!and!raize

@@ -1,0 +1,11 @@
+SAM - Questions
+
+Hvordan registreres kommunale papirdata? Og arkiveringsversioner for den sags skyld?
+
+Hvordan registreres donation/lån/depot? Er det nødvendigt?
+
+Hvordan registrers digitale kopier af andres arkivalier - ala Stiftens Billedsamling?
+
+Hvordan markerer vi original filplacering? via Karens og dermed som seperat fil? Måske nok med den originale sti som er placeret i oas-xml for hver enkelt
+
+Hvordan skal man printe hhv. accessionssedler/registreringer?
